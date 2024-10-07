@@ -276,7 +276,50 @@ void displayPassTwo(HWND hwnd)
     SetWindowText(hOutputBox, outputBuffer);
 }
 
+******INPUT**********
 
 
+COPY    START   1000
+**      LDA     ALPHA
+**      STA     BETA
+**      LDCH    CHARZ
+**      STCH    C1
+ALPHA   BYTE    C'HELLO'
+BETA    RESW    1
+CHARZ   BYTE    X'F1'
+C1      RESB    1
+**      END     COPY
+
+******OPTAB******
+
+LDA 03
+STA	0f
+LDCH	53
+STCH	57
+END	*
+
+*****INTERMEDIATE*******
+
+1003	COPY	START	1000
+1006	**	LDA	ALPHA
+1009	**	STA	BETA
+100C	**	LDCH	CHARZ
+100F	**	STCH	C1
+1012	ALPHA	BYTE	C'HELLO'
+1015	BETA	RESW	1
+1018	CHARZ	BYTE	X'F1'
+101B	C1	RESB	1
 
 
+******SYMTAB*******
+
+COPY 1003
+** 1006
+** 1009
+** 100C
+** 100F
+ALPHA 1012
+BETA 1015
+CHARZ 1018
+C1 101B
+**********************************************8
